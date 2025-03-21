@@ -1,3 +1,14 @@
+import { Popup } from "wini-web-components";
+import { PageView } from "../../layout";
+import { useRef } from "react";
+
 export default function CourseView() {
-    return <div></div>
+    const popupRef = useRef()
+    
+    return <>
+        <Popup ref={popupRef} />
+        <PageView
+
+        />
+    </>
 }
