@@ -1,0 +1,123 @@
+@import url(https://cdn.jsdelivr.net/gh/WiniGit/web-component@latest/src/skin/root.css);
+@import url(https://cdn.jsdelivr.net/gh/WiniGit/web-component@latest/src/skin/typography.css);
+@import url(https://cdn.jsdelivr.net/gh/WiniGit/web-component@latest/src/skin/layout.css);
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body * {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  font-family: 'Inter';
+}
+
+body * {
+  background-color: transparent;
+  outline: none;
+}
+
+button,
+input,
+a {
+  text-decoration: none;
+  outline: none;
+  padding: 0;
+  border: none;
+}
+
+button,
+button * {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--neutral-hover-background-color);
+}
+
+.main-layout {
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden auto !important;
+  background-color: var(--neutral-absolute-background-color);
+}
+
+.main-layout.row {
+  flex-wrap: wrap;
+  align-items: start !important;
+  align-content: start !important;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 0.4rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 0.4rem;
+  background-color: #c1c1c1;
+  visibility: hidden;
+}
+
+*:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.page-container::-webkit-scrollbar,
+.main-layout::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+.table-view {
+  flex: 1;
+  height: 100%;
+}
+
+.popup-actions {
+  padding: 0.4rem 0;
+  max-height: 28rem;
+  min-width: 10rem;
+  background-color: var(--neutral-absolute-background-color);
+  border: var(--neutral-main-border);
+}
+
+.popup-actions>button {
+  padding: 0.8rem;
+  gap: 0.8rem;
+}
+
+.popup-actions>button * {
+  color: var(--neutral-text-title-color);
+}
+
+.popup-actions>button:disabled * {
+  color: var(--neutral-text-disabled-color);
+  --color: var(--neutral-text-disabled-color);
+}
+
+.popup-actions>button:hover {
+  background-color: var(--neutral-hover-background-color);
+}
+
+.col>.remain {
+  flex: 1 !important;
+  height: 100% !important;
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100%;
+}
