@@ -2,7 +2,7 @@ import WiniProvider, { Route } from "wini-web-components";
 import config from "./config";
 import './App.css';
 import { PageView } from "./screen/layout";
-import LoginView from "./screen/module/login/login";
+import LoginView from "./screen/module/customer/view/login";
 import CourseView from "./screen/module/course/course";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 

@@ -3,15 +3,15 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form"
 import { useLocation, PageByUrl, AccountController, Util, ToastMessage, Text, TextFieldForm, Winicon } from "wini-web-components"
-import { auth } from "../../../firebase";
-import config from "../../../config";
+import { auth } from "../../../../firebase";
+import config from "../../../../config";
 
-export default function LoginView() {
+export default function RegisterView() {
     const methods = useForm({ shouldFocusError: false })
     const location = useLocation()
     const account = new AccountController();
 
-      const handleLoginResponse = async (res) => {
+    const handleLoginResponse = async (res) => {
         if (res.code !== 200) ToastMessage.errors(res.message)
         else {
             ToastMessage.success("Login successfully!")
@@ -30,10 +30,6 @@ export default function LoginView() {
         else handleLoginResponse(res)
     }
     
-    const handleForgotPassword = async () => {
-
-    }
-
     const handleAppleLogin = async () => {
         try {
           // Tạo provider cho Apple

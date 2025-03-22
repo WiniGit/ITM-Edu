@@ -1,6 +1,6 @@
 import { CSSProperties, forwardRef, MouseEventHandler, ReactNode, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, closePopup, PageByUrl, Popup, showPopup, Switch, Text, useLocation, Winicon } from 'wini-web-components'
+import { Button, closePopup, PageByUrl, Popup, showPopup, Switch, Text, useLocation, Util, Winicon } from 'wini-web-components'
 
 export const PageView = ({ childrenData = {}, itemData = {}, propsData = {} }: {
     childrenData?: { [p: string]: ReactNode },
@@ -10,8 +10,8 @@ export const PageView = ({ childrenData = {}, itemData = {}, propsData = {} }: {
     const methods = useForm({ shouldFocusError: false })
     const location = useLocation()
     const popupRef = useRef<any>(null)
-    // router custom UI
-
+    
+ 
     useEffect(() => {
         // const controller = new DataController("Course")
         // BaseDA.uploadFiles()
@@ -46,6 +46,11 @@ export const PageView = ({ childrenData = {}, itemData = {}, propsData = {} }: {
 const PopupUserActions = forwardRef(function PopupUserActions({ style = {} }: { style: CSSProperties }, ref: any) {
     // const user = useSelector((store) => store.customer.data)
 
+    const handleLogout = () => {
+        Util.clearCookie()
+        window.location.replace("/login")
+    }
+
     return <div className={`col popup-actions account-actions dropdown-popup`} style={{ ...style, width: 'fit-content', minWidth: "26rem" }}>
         <div className='row' style={{ padding: "1rem 1.6rem", gap: "0.8rem", borderBottom: "var(--neutral-main-border)" }}>
             {/* <CustomerAvatar /> */}
@@ -78,6 +83,7 @@ const PopupUserActions = forwardRef(function PopupUserActions({ style = {} }: { 
                 className='button-text-3 neutral-button border'
                 style={{ width: "calc(100% - 1.6rem)" }}
                 onClick={() => {
+                    handleLogout();
                     closePopup(ref)
                     // CustomerActions.logout()
                 }}
