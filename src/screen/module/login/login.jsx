@@ -36,46 +36,20 @@ export default function LoginView() {
 
     const handleAppleLogin = async () => {
         try {
-      
           // Tạo provider cho Apple
           const provider = new OAuthProvider("apple.com");
-          // Yêu cầu thông tin email và tên (tùy chọn)
-          provider.addScope("email");
-          provider.addScope("name");
-          // Đặt ngôn ngữ (ví dụ: tiếng Việt)
-          provider.setCustomParameters({ locale: "vi" });
-    
-          // Gọi popup đăng nhập
-          const result = await signInWithPopup(auth, provider);
-          const user = result.user;
-    
-          // Lấy Firebase ID Token
-          const idToken = await user.getIdToken();
-          console.log("Firebase ID Token:", idToken);
-          debugger
-          const res = await account.login({
-            type: "apple",
-            token: idToken,
-        });
-          handleLoginResponse(res)
-
-        //   const credential = result.credential;
-        //   if (credential) {
-        //     console.log("Apple Credential:", {
-        //       idToken: credential.idToken, // Apple ID Token (nếu có)
-        //       accessToken: credential.accessToken, // Access Token từ Apple (nếu có)
-        //     });
-        
-           
-        //   }
-            // // Gửi token về backend
-            // await sendTokenToBackend(idToken);
-            
-          console.log("Đăng nhập thành công:", {
-            uid: user.uid,
-            email: user.email,
-            displayName: user.displayName,
-          });
+       
+          await signInWithPopup(auth, provider).then(async rs => {
+            debugger
+            const credential = OAuthProvider.credentialFromResult(rs);
+            const idToken = credential.idToken;
+            console.log("Firebase ID Token:", idToken);
+            const res = await account.login({
+              type: "apple",
+              token: idToken,
+            });
+            handleLoginResponse(res);
+          })
         } catch (error) {
           console.error("Lỗi đăng nhập Apple:", error.code, error.message);
         }
